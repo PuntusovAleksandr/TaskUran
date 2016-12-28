@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Task Uran</string>
+    <string name="modified">modified </string>
+    <string name="actions">Actions</string>
+    <string name="set_as_favorite">Set as favorite</string>
+    <string name="get_permalink">Get permalink</string>
+    <string name="delete">Delete</string>
+</resources>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/_1dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/color_blue"
+        android:gravity="center"
+        android:text="@string/actions"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/_24sp"/>
+
+    <Button
+        android:id="@+id/bt_favorite"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_marginLeft="@dimen/_24dp"
+        android:layout_marginRight="@dimen/_24dp"
+        android:background="@android:color/white"
+        android:drawableLeft="@drawable/ic_star"
+        android:drawablePadding="?attr/actionBarSize"
+        android:gravity="center_vertical"
+        android:text="@string/set_as_favorite"
+        android:textSize="@dimen/_24sp"/>
+
+    <Button
+        android:id="@+id/bt_permalink"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_marginLeft="@dimen/_24dp"
+        android:layout_marginRight="@dimen/_24dp"
+        android:background="@android:color/white"
+        android:drawableLeft="@drawable/ic_all"
+        android:drawablePadding="?attr/actionBarSize"
+        android:gravity="center_vertical"
+        android:text="@string/get_permalink"
+        android:textSize="@dimen/_24sp"/>
+
+    <Button
+        android:id="@+id/bt_delete"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_marginLeft="@dimen/_24dp"
+        android:layout_marginRight="@dimen/_24dp"
+        android:background="@android:color/white"
+        android:drawableLeft="@drawable/ic_delete"
+        android:drawablePadding="?attr/actionBarSize"
+        android:gravity="center_vertical"
+        android:text="@string/delete"
+        android:textSize="@dimen/_24sp"/>
+
+</LinearLayout>
