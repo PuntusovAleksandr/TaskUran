@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 import com.aleksandrp.taskuran.R;
 import com.aleksandrp.taskuran.model.FileModel;
-import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -31,7 +30,7 @@ import static com.aleksandrp.taskuran.utils.FileType.PDF;
  * Created by AleksandrP on 28.12.2016.
  */
 
-public class RecyclerFileAdapter  extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class RecyclerFileAdapter extends RecyclerView.Adapter<RecyclerFileAdapter.ViewHolder> {
 
     private List<FileModel> mFileModels;
     private Context mContext;
@@ -59,22 +58,22 @@ public class RecyclerFileAdapter  extends RecyclerView.Adapter<RecyclerView.View
 
 
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_item, parent, false);
-        RecyclerView.ViewHolder viewHolder = new FileContentHolder(view);
+        ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerFileAdapter.ViewHolder holder, int position) {
         if (mFileModels.size() > 0) {
             final FileModel model = mFileModels.get(position);
 
             SimpleDateFormat format = new SimpleDateFormat("MMM d, yyyy");
-            String date = mContext.getString(R.string.modified) +
+            String date = mContext.getString(R.string.modified) +" " +
                     format.format(new Date(model.getModDate()));
-            ((FileContentHolder) holder).tv_title.setText(model.getFilename());
-            ((FileContentHolder) holder).tv_time.setText(date);
+            holder.tv_title.setText(model.getFilename());
+            holder.tv_time.setText(date);
 
             int blue, orange, folder, resIcon = R.drawable.ic_ets;
 
@@ -113,16 +112,13 @@ public class RecyclerFileAdapter  extends RecyclerView.Adapter<RecyclerView.View
                 orange = View.GONE;
             }
 
-            ((FileContentHolder) holder).view_short.setVisibility(folder);
-            ((FileContentHolder) holder).view_blue.setVisibility(blue);
-            ((FileContentHolder) holder).view_orange.setVisibility(orange);
+            holder.view_short.setVisibility(folder);
+            holder.view_blue.setVisibility(blue);
+            holder.view_orange.setVisibility(orange);
 
-            Picasso.with(mContext)
-                    .load(resIcon)
-                    .fit()
-                    .into(((FileContentHolder) holder).iv_image);
+            holder.iv_image.setImageResource(resIcon);
 
-            ((FileContentHolder) holder).ll_item_main.setOnClickListener(new View.OnClickListener() {
+            holder.ll_item_main.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (mListenerAdapter != null) {
@@ -131,7 +127,7 @@ public class RecyclerFileAdapter  extends RecyclerView.Adapter<RecyclerView.View
                 }
             });
 
-            ((FileContentHolder) holder).ll_item_main.setOnLongClickListener(new View.OnLongClickListener() {
+            holder.ll_item_main.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
                     if (mListenerAdapter != null) {
@@ -152,7 +148,7 @@ public class RecyclerFileAdapter  extends RecyclerView.Adapter<RecyclerView.View
         return size;
     }
 
-    static class FileContentHolder extends RecyclerView.ViewHolder {
+    static class ViewHolder extends RecyclerView.ViewHolder {
 
         @Bind(R.id.ll_item_main)
         LinearLayout ll_item_main;
@@ -172,7 +168,7 @@ public class RecyclerFileAdapter  extends RecyclerView.Adapter<RecyclerView.View
         @Bind(R.id.view_bar_indicator_short)
         View view_short;
 
-        public FileContentHolder(View itemView) {
+        public ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }

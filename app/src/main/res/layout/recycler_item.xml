@@ -51,6 +51,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_margin="@dimen/_24dp"
+                android:paddingBottom="@dimen/_16dp"
+                android:paddingTop="@dimen/_16dp"
                 android:src="@drawable/ic_folder_"/>
 
             <LinearLayout
